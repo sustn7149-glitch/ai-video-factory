@@ -107,13 +107,13 @@ export default function AnalyticsPage() {
             {/* Performance Grid */}
             <div className="bg-white rounded-xl border border-[#E5E5E5] overflow-hidden">
                 {/* Grid Header */}
-                <div className="grid grid-cols-[3fr_1fr_1.5fr_2fr_2fr_1fr] gap-4 px-6 py-4 bg-[#FAFAFA] border-b border-[#E5E5E5]">
-                    <div className="text-[12px] font-bold text-[#888888]">영상 (Video)</div>
-                    <div className="text-[12px] font-bold text-[#888888] text-center">채널</div>
-                    <div className="text-[12px] font-bold text-[#888888] text-center">프롬프트</div>
-                    <div className="text-[12px] font-bold text-[#888888]">성과 지표</div>
-                    <div className="text-[12px] font-bold text-[#888888]">AI 분석</div>
-                    <div className="text-[12px] font-bold text-[#888888] text-right">게시일</div>
+                <div className="grid grid-cols-[3fr_1fr_1.5fr_2fr_2fr_1fr] gap-4 px-6 py-2 bg-[#FAFAFA] border-b border-[#E5E5E5] text-[11px] font-semibold text-[#888888] uppercase tracking-wider">
+                    <div className="text-[11px] font-semibold text-[#888888]">영상 (Video)</div>
+                    <div className="text-[11px] font-semibold text-[#888888] text-center">채널</div>
+                    <div className="text-[11px] font-semibold text-[#888888] text-center">프롬프트</div>
+                    <div className="text-[11px] font-semibold text-[#888888]">성과 지표</div>
+                    <div className="text-[11px] font-semibold text-[#888888]">AI 분석</div>
+                    <div className="text-[11px] font-semibold text-[#888888] text-right">게시일</div>
                 </div>
 
                 {/* Grid List */}
@@ -124,19 +124,19 @@ export default function AnalyticsPage() {
                         </div>
                     ) : (
                         performanceData.map((item: any) => (
-                            <Link key={item._id} href={`/analytics/${item._id}`} className="grid grid-cols-[3fr_1fr_1.5fr_2fr_2fr_1fr] gap-4 px-6 py-4 border-b border-[#F5F5F5] items-center hover:bg-[#FAFAFA] transition-colors group cursor-pointer text-left">
+                            <Link key={item._id} href={`/analytics/${item._id}`} className="grid grid-cols-[3fr_1fr_1.5fr_2fr_2fr_1fr] gap-4 px-6 border-b border-[#F5F5F5] items-center hover:bg-gray-50 transition-colors group cursor-pointer text-left h-[42px]">
 
                                 {/* Video Info */}
-                                <div className="flex items-center gap-4">
-                                    <div className={`w-12 h-12 rounded-lg ${item.thumbnail} shadow-sm border border-black/5 flex-shrink-0`} />
-                                    <span className="text-[14px] font-bold text-[#333333] line-clamp-1 group-hover:text-black">
+                                <div className="flex items-center gap-3 overflow-hidden">
+                                    <div className={`w-8 h-8 rounded-md ${item.thumbnail} shadow-sm border border-black/5 flex-shrink-0`} />
+                                    <span className="text-[13px] font-semibold text-gray-900 truncate group-hover:text-blue-600 block max-w-full">
                                         {item.title}
                                     </span>
                                 </div>
 
                                 {/* Channel */}
                                 <div className="flex justify-center">
-                                    <span className="px-3 py-1 bg-[#F5F5F5] text-[#555555] text-[12px] font-bold rounded-full border border-[#E0E0E0]">
+                                    <span className="px-2 py-0.5 bg-[#F5F5F5] text-[#555555] text-[11px] font-bold rounded-full border border-[#E0E0E0]">
                                         {item.channel}
                                     </span>
                                 </div>
@@ -144,49 +144,49 @@ export default function AnalyticsPage() {
                                 {/* Prompt Version */}
                                 <div className="flex flex-col items-center">
                                     <span className={clsx(
-                                        "text-[13px] font-bold cursor-pointer hover:underline",
+                                        "text-[12px] font-bold cursor-pointer hover:underline",
                                         item.promptVersion === "Ver 1.4" ? "text-blue-600" :
                                             item.promptVersion === "Ver 1.3" ? "text-orange-600" :
                                                 item.promptVersion === "Ver 1.0" ? "text-purple-600" : "text-[#555555]"
                                     )}>
                                         [{item.promptVersion}]
                                     </span>
-                                    <span className="text-[10px] text-[#999999] mt-0.5">Source: {item.promptSource}</span>
+                                    {/* <span className="text-[10px] text-[#999999] mt-0.5">Source: {item.promptSource}</span> */}
                                 </div>
 
                                 {/* Metrics */}
-                                <div className="flex items-center gap-6">
+                                <div className="flex items-center gap-4">
                                     <div>
-                                        <div className="text-[10px] font-bold text-[#AAAAAA] mb-0.5">Views</div>
-                                        <div className="text-[14px] font-bold text-[#111111]">{(item.views / 1000).toFixed(1)}만</div>
+                                        {/* <div className="text-[10px] font-bold text-[#AAAAAA] mb-0.5">Views</div> */}
+                                        <div className="text-[12px] font-bold text-gray-900 font-mono">{(item.views / 1000).toFixed(1)}k <span className="text-gray-400 font-normal text-[10px]">Views</span></div>
                                     </div>
                                     <div>
-                                        <div className="text-[10px] font-bold text-[#AAAAAA] mb-0.5">CTR</div>
-                                        <div className={clsx("text-[14px] font-bold", item.ctr >= 6.0 ? "text-green-600" : "text-[#111111]")}>
-                                            {item.ctr}%
+                                        {/* <div className="text-[10px] font-bold text-[#AAAAAA] mb-0.5">CTR</div> */}
+                                        <div className={clsx("text-[12px] font-bold font-mono", item.ctr >= 6.0 ? "text-green-600" : "text-[#111111]")}>
+                                            {item.ctr}% <span className="text-gray-400 font-normal text-[10px]">CTR</span>
                                         </div>
                                     </div>
-                                    <div>
+                                    {/* <div>
                                         <div className="text-[10px] font-bold text-[#AAAAAA] mb-0.5">Ret</div>
                                         <div className={clsx("text-[14px] font-bold", parseInt(item.retention) <= 50 ? "text-red-500" : "text-[#111111]")}>
                                             {item.retention}
                                         </div>
-                                    </div>
+                                    </div> */}
                                 </div>
 
                                 {/* AI Insights */}
-                                <div className="flex items-center gap-2">
-                                    {item.insightType === 'success' && <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />}
-                                    {item.insightType === 'warning' && <AlertTriangle className="w-4 h-4 text-amber-500 flex-shrink-0" />}
-                                    {item.insightType === 'info' && <Zap className="w-4 h-4 text-orange-500 flex-shrink-0" />}
+                                <div className="flex items-center gap-2 overflow-hidden">
+                                    {item.insightType === 'success' && <CheckCircle className="w-3.5 h-3.5 text-green-500 flex-shrink-0" />}
+                                    {item.insightType === 'warning' && <AlertTriangle className="w-3.5 h-3.5 text-amber-500 flex-shrink-0" />}
+                                    {item.insightType === 'info' && <Zap className="w-3.5 h-3.5 text-orange-500 flex-shrink-0" />}
 
-                                    <span className="text-[13px] font-medium text-[#444444] line-clamp-1">
+                                    <span className="text-[11px] font-medium text-[#444444] truncate block max-w-full">
                                         {item.insightText}
                                     </span>
                                 </div>
 
                                 {/* Date */}
-                                <div className="text-right text-[12px] font-mono text-[#888888]">
+                                <div className="text-right text-[11px] font-mono text-[#888888]">
                                     {item.date}
                                 </div>
 

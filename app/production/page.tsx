@@ -78,15 +78,15 @@ export default function ProductionPage() {
                 {/* Data Grid */}
                 <div className="bg-white border border-[#E5E5E5] rounded-xl overflow-hidden shadow-sm">
                     {/* Grid Header */}
-                    <div className="flex items-center px-6 py-3 bg-[#FAFAFA] border-b border-[#E5E5E5] text-[12px] font-medium text-[#888888]">
+                    <div className="flex items-center px-6 py-2 bg-[#FAFAFA] border-b border-[#E5E5E5] text-[11px] font-semibold text-[#888888] uppercase tracking-wider">
                         <div className="w-16 text-center">번호</div>
-                        <div className="w-32 text-left">생성일시</div>
+                        <div className="w-24 text-left">생성일시</div>
                         <div className="flex-1 min-w-[300px] pl-4">이미지 / 제목</div>
-                        <div className="w-32 text-center">작업자</div>
-                        <div className="w-32 text-center">음성</div>
-                        <div className="w-32 text-center">채널</div>
-                        <div className="w-32 text-left pl-4">업로드 예약</div>
-                        <div className="w-32 text-center">진행상태</div>
+                        <div className="w-24 text-center">작업자</div>
+                        <div className="w-24 text-center">음성</div>
+                        <div className="w-24 text-center">채널</div>
+                        <div className="w-28 text-left pl-4">업로드 예약</div>
+                        <div className="w-24 text-center">진행상태</div>
                     </div>
 
                     {/* Grid Body */}
@@ -113,37 +113,37 @@ export default function ProductionPage() {
                             return (
                                 <div
                                     key={project._id}
-                                    className="flex items-center px-6 py-4 border-b border-[#F5F5F5] last:border-0 hover:bg-[#FAFAFA] transition-colors group"
+                                    className="flex items-center px-6 border-b border-[#F5F5F5] last:border-0 hover:bg-gray-50 transition-colors group h-[42px]"
                                 >
                                     {/* No. */}
-                                    <div className="w-16 text-center text-[13px] text-[#888888] font-mono">
+                                    <div className="w-16 text-center text-[11px] text-[#888888] font-mono">
                                         {index + 1}
                                     </div>
 
                                     {/* Created Date */}
-                                    <div className="w-32 text-left text-[12px] text-[#666666] leading-tight">
+                                    <div className="w-24 text-left text-[11px] text-[#666666] leading-tight font-mono">
                                         <div className="font-medium text-[#111111]">{dateStr}</div>
-                                        <div className="text-[#AAAAAA] text-[11px] mt-0.5">{timeStr}</div>
+                                        {/* <div className="text-[#AAAAAA] text-[10px] mt-0.5">{timeStr}</div> */}
                                     </div>
 
                                     {/* Title & Image */}
-                                    <div className="flex-1 min-w-[300px] flex items-center gap-4 pl-4">
-                                        <div className={`w-10 h-10 rounded-lg ${project.thumbnailUrl ? 'bg-cover' : 'bg-gray-100'} border border-black/5 flex-shrink-0 shadow-sm`} />
-                                        <Link href={`/studio?project=${project._id}`} className="text-[14px] font-bold text-[#111111] line-clamp-1 group-hover:text-blue-600 transition-colors cursor-pointer hover:underline">
+                                    <div className="flex-1 min-w-[300px] flex items-center gap-3 pl-4 overflow-hidden">
+                                        <div className={`w-8 h-8 rounded-md ${project.thumbnailUrl ? 'bg-cover' : 'bg-gray-100'} border border-black/5 flex-shrink-0 shadow-sm`} />
+                                        <Link href={`/production/${project._id}`} className="text-[13px] font-semibold text-gray-900 truncate hover:text-blue-600 transition-colors cursor-pointer block max-w-full">
                                             {project.title}
                                         </Link>
                                     </div>
 
                                     {/* Operator */}
-                                    <div className="w-32 flex justify-center items-center gap-2">
-                                        <div className={`w-6 h-6 rounded-full ${operatorAvatar} flex items-center justify-center text-[10px] font-bold text-[#444444] border border-black/5`}>
+                                    <div className="w-24 flex justify-center items-center gap-2">
+                                        <div className={`w-5 h-5 rounded-full ${operatorAvatar} flex items-center justify-center text-[9px] font-bold text-[#444444] border border-black/5`}>
                                             {operator[0]}
                                         </div>
-                                        <span className="text-[13px] text-[#444444]">{operator}</span>
+                                        <span className="text-[12px] text-[#444444]">{operator}</span>
                                     </div>
 
                                     {/* Voice */}
-                                    <div className="w-32 flex flex-col items-center justify-center">
+                                    <div className="w-24 flex flex-col items-center justify-center">
                                         <div className="flex items-center text-[12px] font-medium text-[#444444]">
                                             <Mic className="w-3 h-3 mr-1 text-[#888888]" />
                                             {voice}
@@ -151,21 +151,21 @@ export default function ProductionPage() {
                                     </div>
 
                                     {/* Channel */}
-                                    <div className="w-32 flex justify-center">
-                                        <span className="px-2 py-0.5 rounded border border-[#EEEEEE] bg-[#FAFAFA] text-[11px] font-medium text-[#666666]">
+                                    <div className="w-24 flex justify-center">
+                                        <span className="px-1.5 py-0.5 rounded border border-[#EEEEEE] bg-[#FAFAFA] text-[11px] font-medium text-[#666666]">
                                             {channel}
                                         </span>
                                     </div>
 
                                     {/* Upload Scheduled */}
-                                    <div className="w-32 text-left pl-4 text-[12px] text-[#666666] leading-tight">
+                                    <div className="w-28 text-left pl-4 text-[11px] text-[#666666] leading-tight font-mono">
                                         <span className="text-[#DDDDDD]">-</span>
                                     </div>
 
                                     {/* Status */}
-                                    <div className="w-32 flex justify-center">
+                                    <div className="w-24 flex justify-center">
                                         <span className={clsx(
-                                            "px-2.5 py-1 rounded text-[12px] font-bold border",
+                                            "px-2 py-0.5 rounded text-[11px] font-bold border",
                                             statusStyle.bg,
                                             statusStyle.text,
                                             statusStyle.border
