@@ -35,6 +35,7 @@ interface WorkspaceProps {
 
 export default function WorkspaceClient({ id }: WorkspaceProps) {
     const router = useRouter();
+    const createProject = useMutation(api.projects.createProject);
     const [title, setTitle] = useState("아이폰 16, 디자인 진짜 이렇게 나옴? (충격)");
     const [isCreating, setIsCreating] = useState(false);
     const [scriptContent, setScriptContent] = useState<string>(`
