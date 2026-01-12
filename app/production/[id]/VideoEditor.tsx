@@ -19,7 +19,8 @@ import {
     Image as ImageIcon,
     Mic,
     MoreHorizontal,
-    GripVertical
+    GripVertical,
+    Wand2
 } from "lucide-react";
 import clsx from "clsx";
 
