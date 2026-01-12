@@ -33,7 +33,7 @@ export default function SettingsPage() {
     const handleToggle = async () => {
         if (!settings) return;
         await updateSettings({
-            id: settings._id,
+            id: "_id" in settings ? settings._id : undefined,
             isAutoOptimizeOn: !settings.isAutoOptimizeOn
         });
     };
